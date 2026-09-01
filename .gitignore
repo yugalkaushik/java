@@ -1,0 +1,88 @@
+# =========================
+# Java / Maven / Gradle
+# =========================
+
+# Compiled Java files
+*.class
+
+# Java archives
+*.jar
+*.war
+*.ear
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# =========================
+# IDEs / Editors
+# =========================
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/.nb-gradle/
+
+# =========================
+# OS files
+# =========================
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# Linux
+*~
+
+# =========================
+# Logs / Temporary files
+# =========================
+
+*.log
+*.tmp
+*.swp
+*.swo
+
+# =========================
+# Java tooling
+# =========================
+
+hs_err_pid*
+replay_pid*
+
+# =========================
+# Personal / local files
+# =========================
+
+.env
+.env.*
