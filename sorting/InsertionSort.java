@@ -17,6 +17,7 @@ public class InsertionSort {
             int j = i - 1;
             while(j>=0 && arr[j-1] > curr){
                 arr[j+1] = arr[j];
+                j--;
             }
             arr[j + 1] = curr;
         }
