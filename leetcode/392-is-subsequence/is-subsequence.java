@@ -4,8 +4,8 @@ class Solution {
         if(t.length()==0) return false;
         
         int index = 0;
-        for(int i=0;i<t.length();i++){
-            if(index < s.length() && s.charAt(index)==t.charAt(i)){
+        for(int i=0;i<t.length() && index<s.length();i++){
+            if(s.charAt(index)==t.charAt(i)){
                 index++;
             }
         }
