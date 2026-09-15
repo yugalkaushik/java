@@ -3,14 +3,15 @@ class Solution {
         if (numRows == 1 || numRows >= s.length()) {
             return s;
         }
-        String[] result = new String[numRows];
+        StringBuilder[] result = new StringBuilder[numRows];
+
         for (int i = 0; i < numRows; i++) {
-            result[i] = "";
+            result[i] = new StringBuilder();
         }
         int index = 0;
         boolean movingDown = true;
         for(int i=0;i<s.length();i++){
-            result[index] += s.charAt(i);
+            result[index].append(s.charAt(i));
             if(index==numRows-1){
                 movingDown = false;
             }
@@ -23,10 +24,10 @@ class Solution {
                 index--;
             }
         }
-        String r = "";
-        for(String t:result){
-            r = r.concat(t);
+        StringBuilder r = new StringBuilder("");
+        for(StringBuilder t:result){
+            r = r.append(t);
         }
-        return r;
+        return r.toString();
     }
 }
