@@ -14,8 +14,8 @@
  * }
  */
 class Solution {
-    private HashMap<Integer,Integer> map = new HashMap<>();
-    private int preIndex = 0;
+    HashMap<Integer,Integer> map = new HashMap<>();
+    int preIndex = 0;
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         for(int i=0;i<inorder.length;i++){
             map.put(inorder[i],i);
@@ -24,12 +24,11 @@ class Solution {
     }
     public TreeNode build(int[] preorder, int left, int right){
         if(left>right) return null;
-        int rootValue = preorder[preIndex];
-        preIndex++;
-        TreeNode root = new TreeNode(rootValue);
+        int rootValue = preorder[preIndex++];
         int rootIndex = map.get(rootValue);
-        root.left = build(preorder,left,rootIndex - 1);
-        root.right = build(preorder,rootIndex + 1, right);
+        TreeNode root = new TreeNode(rootValue);
+        root.left = build(preorder,left,rootIndex-1);
+        root.right = build(preorder,rootIndex+1,right);
         return root;
     }
 }
