@@ -4,10 +4,8 @@ class Solution {
     public int[] findMode(TreeNode root) {
         build(root);
         int max = 0;
-        int size = 0;
         for (int value : map.values()) {
             max = Math.max(max, value);
-            size++;
         }
         List<Integer> array = new ArrayList();
         for (int key : map.keySet()) {
