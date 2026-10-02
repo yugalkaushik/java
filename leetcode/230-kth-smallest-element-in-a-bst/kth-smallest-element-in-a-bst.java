@@ -22,8 +22,9 @@ class Solution {
         return value;
     }
     public void build(TreeNode root){
-        if(root == null) return;
+        if(root == null || index == 0) return;
         if(root.left != null) build(root.left);
+        if (index == 0) return;
         index--;
         if(index==0) value = root.val;
         if(root.right != null) build(root.right);
