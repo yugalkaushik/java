@@ -21,8 +21,8 @@ class Solution {
     }
     public void build(TreeNode root){
         if(root==null) return;
-        if(root.left != null) build(root.left);
-        if(root.right != null) build(root.right);
+        build(root.left);
+        build(root.right);
         result.add(root.val);
         return;
     }
