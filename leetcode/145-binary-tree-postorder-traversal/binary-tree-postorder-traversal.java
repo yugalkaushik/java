@@ -24,6 +24,5 @@ class Solution {
         build(root.left);
         build(root.right);
         result.add(root.val);
-        return;
     }
 }
