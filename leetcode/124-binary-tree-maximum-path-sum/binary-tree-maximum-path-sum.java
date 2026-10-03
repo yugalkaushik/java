@@ -23,10 +23,9 @@ class Solution {
         if(root == null) return 0;
         int left = check(root.left);
         int right = check(root.right);
-        max = Math.max(max,root.val);
-        max = Math.max(max,left+root.val);
-        max = Math.max(max,right+root.val);
+        left = Math.max(0,left);
+        right = Math.max(0,right);
         max = Math.max(max,left+right+root.val);
-        return root.val + Math.max(0,Math.max(left,right));
+        return root.val + Math.max(left,right);
     }
 }
