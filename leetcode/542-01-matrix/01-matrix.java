@@ -1,27 +1,23 @@
 class Solution {
-    int n;
-    int m;
-    public int[][] result;
-    public boolean[][] visited;
     public int[][] updateMatrix(int[][] mat) {
-        n = mat.length;
-        m = mat[0].length;
-        result = new int[n][m];
-        visited = new boolean[n][m];
-        Queue<int[]> queue = new LinkedList<>();
-        for(int r=0;r<n;r++){
-            for(int c=0;c<m;c++){
+        int m = mat.length;
+        int n = mat[0].length;
+        int[][] result = new int[m][n];
+        boolean[][] visited = new boolean[m][n];
+        Queue<int[]> queue = new ArrayDeque<>();
+        for(int r=0;r<m;r++){
+            for(int c=0;c<n;c++){
                 if(mat[r][c] == 0){
-                    queue.offer(new int[]{r, c});
+                    queue.offer(new int[]{r,c});
                     visited[r][c] = true;
                 }
             }
         }
         int[][] directions = {
-            {-1, 0}, // up
-            {1, 0},  // down
-            {0, -1}, // left
-            {0, 1}   // right
+            {-1,0},
+            {+1,0},
+            {0,-1},
+            {0,+1}
         };
         while(!queue.isEmpty()){
             int[] curr = queue.poll();
@@ -30,10 +26,10 @@ class Solution {
             for(int[] d:directions){
                 int nr = r + d[0];
                 int nc = c + d[1];
-                if(nr >= 0 && nr < n && nc >= 0 && nc < m && !visited[nr][nc]){
+                if(nr >= 0 && nr < m && nc >= 0 && nc < n && !visited[nr][nc]){
                     result[nr][nc] = 1 + result[r][c];
+                    queue.offer(new int[]{nr,nc});
                     visited[nr][nc] = true;
-                    queue.offer(new int[]{nr, nc});
                 }
             }
         }
