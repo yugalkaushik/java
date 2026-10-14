@@ -1,45 +1,39 @@
 class Solution {
-    public List<Integer> result;
     public int[] findOrder(int numCourses, int[][] prerequisites) {
-        result = new ArrayList<>();
-        boolean[] visited = new boolean[numCourses];
-        boolean[] path = new boolean[numCourses];
+        List<Integer> result = new ArrayList<>();
         List<List<Integer>> neighbors = new ArrayList<>();
-        for(int i =0;i<numCourses;i++){
+        for(int i=0;i<numCourses;i++){
             neighbors.add(new ArrayList<>());
         }
-        for(int[]p:prerequisites){
-            neighbors.get(p[0]).add(p[1]);
+        int[] indegree = new int[numCourses];
+        for (int[] p : prerequisites) {
+            neighbors.get(p[1]).add(p[0]);
+            indegree[p[0]]++;
         }
-        for(int u=0;u<numCourses;u++){
-            if(!visited[u]){
-                if(dfs(u,neighbors,visited,path)){
-                    return new int[0];
+        Queue<Integer> queue = new ArrayDeque<>();
+        for(int i=0;i<numCourses;i++){
+            if(indegree[i]==0){
+                queue.offer(i);
+            }   
+        }
+        int count = 0;
+        while(!queue.isEmpty()){
+            int u = queue.poll();
+            result.add(u);
+            for(int v: neighbors.get(u)){
+                indegree[v]--;
+                if(indegree[v]==0){
+                    queue.offer(v);
                 }
             }
         }
-        int[] order = new int[numCourses];
-        for (int i = 0; i < numCourses; i++){
-            order[i] = result.get(i); 
+        if(result.size()!= numCourses){
+            return new int[0];
         }
-        return order;
-    }
-    public boolean dfs(int u,List<List<Integer>> neighbors, boolean[] visited, boolean[] path){
-        visited[u] = true;
-        path[u] = true;
-        for(int v:neighbors.get(u)){
-            if(!visited[v]){
-                if(dfs(v,neighbors,visited,path)){
-                    path[u] = false;
-                    return true;
-                }
-            }else if(path[v]){
-                path[u] = false;
-                return true;
-            }
+        int[] answer = new int[numCourses];
+        for(int i=0;i<numCourses;i++){
+            answer[i] = result.get(i);
         }
-        path[u] = false;
-        result.add(u);
-        return false;
+        return answer;
     }
 }
