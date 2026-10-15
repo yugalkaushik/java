@@ -7,12 +7,10 @@ class Solution {
 
         Queue<String> queue = new LinkedList<>();
 
-        // Initialize indegree for each recipe
         for (int i = 0; i < recipes.length; i++) {
             indegree.put(recipes[i], ingredients.get(i).size());
         }
 
-        // Build graph: ingredient -> recipes that require it
         for (int i = 0; i < recipes.length; i++) {
             for (int j = 0; j < ingredients.get(i).size(); j++) {
                 String ingredient = ingredients.get(i).get(j);
@@ -22,19 +20,16 @@ class Solution {
             }
         }
 
-        // Add all initial supplies to the queue
         for (String supply : supplies) {
             queue.offer(supply);
         }
 
-        // Kahn's Algorithm
         while (!queue.isEmpty()) {
             String current = queue.poll();
 
             if (!graph.containsKey(current)) {
                 continue;
             }
-
             for (String recipe : graph.get(current)) {
                 indegree.put(recipe, indegree.get(recipe) - 1);
 
@@ -44,7 +39,6 @@ class Solution {
                 }
             }
         }
-
         return result;
     }
 }
