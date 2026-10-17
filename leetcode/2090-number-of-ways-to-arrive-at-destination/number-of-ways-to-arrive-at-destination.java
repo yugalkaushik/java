@@ -32,7 +32,7 @@ class Solution {
             long[] curr = pq.poll();
             long dist = curr[0];
             int node = (int)curr[1];
-            
+            if(dist > distance[node]) continue;
             for(int[]v:graph.get(node)){
                 long newD = dist + v[0];
                 int neighbor = v[1];
