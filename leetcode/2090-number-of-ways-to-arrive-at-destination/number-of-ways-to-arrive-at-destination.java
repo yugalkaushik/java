@@ -38,7 +38,7 @@ class Solution {
             for(int[] v:graph.get(node)){
                 long newD = dist + v[1];
                 int neighbor = v[0];
-                if(newD < distance[v[0]]){
+                if(newD < distance[neighbor]){
                     distance[neighbor] = newD;
                     count[neighbor] = count[node];
                     pq.offer(new long[]{newD,neighbor});
