@@ -4,20 +4,13 @@ class Solution {
         int left = 0;
         int right = people.length - 1;
         int count = 0;
-        while(left < right){
-            if(people[right] == limit){
-                count++;
-                right--;
-            } else if(people[right] + people[left] <= limit){
-                right--;
+        while(left <= right){
+            if(people[right] + people[left] <= limit){
                 left++;
-                count++;
-            } else if(people[right] < limit){
-                right--;
-                count++;
             }
+            right--;
+            count++;
         }
-        if(left == right) count++;
         return count;
     }
 }
