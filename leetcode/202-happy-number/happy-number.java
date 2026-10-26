@@ -8,11 +8,10 @@ class Solution {
             }
         return sum;
     }
-    
     public boolean isHappy(int n) {
         int slow = n;
         int fast = n;
-        do{
+        do {
             slow = getNext(slow);
             fast = getNext(getNext(fast));
         } while(slow != fast);
