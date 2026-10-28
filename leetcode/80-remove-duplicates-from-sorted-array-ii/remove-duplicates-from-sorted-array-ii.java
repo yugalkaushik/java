@@ -5,9 +5,7 @@ class Solution {
         int count = 2;
         int prev = nums[0];
         for(int i=0;i<n;i++){
-            int temp = nums[pos];
             nums[pos] = nums[i];
-            nums[i] = nums[pos];
             if(nums[i]==prev && count>0){
                 count--;
                 pos++;
@@ -16,7 +14,6 @@ class Solution {
                 prev = nums[i];
                 pos++;
             }
-            
         }
         return pos;
     }
