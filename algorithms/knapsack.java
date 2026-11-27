@@ -1,4 +1,5 @@
 package algorithms;
+
 import java.util.*;
 
 public class knapsack {
@@ -19,7 +20,6 @@ public class knapsack {
         int skip = memo(wt, val, i-1, w, dp);
         return dp[i][w] = Math.max(take, skip);
     }
-    
     public static void main(String[] args){
         int[] wt = new int[]{1,3,4,7};
         int[] val = new int[]{1,4,5,7};
